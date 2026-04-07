@@ -4,4 +4,4 @@ interface:
   default_prompt: "Use $project-developer to read project memory, implement the change, verify it, and update the session history."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

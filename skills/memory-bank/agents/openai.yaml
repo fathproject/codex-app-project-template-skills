@@ -4,4 +4,4 @@ interface:
   default_prompt: "Use $memory-bank to read the project memory first and update it before the session ends."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

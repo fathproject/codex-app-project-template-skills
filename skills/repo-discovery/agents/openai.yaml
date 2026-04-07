@@ -1,0 +1,7 @@
+interface:
+  display_name: "Repo Discovery"
+  short_description: "Map an unfamiliar repository quickly"
+  default_prompt: "Use $repo-discovery to inspect this repository, identify the stack and commands, and summarize the key entry points and risks."
+
+policy:
+  allow_implicit_invocation: false

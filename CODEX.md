@@ -36,8 +36,12 @@ It combines:
 - `$memory-bank` for continuity across sessions
 - `$project-developer` for normal implementation work
 - `$autonomous-agent` for end-to-end project execution
+- `$repo-discovery` for unfamiliar repositories or inherited codebases
 - `$requirements-analysis` for discovery and planning
+- `$review-verification` for code review, regression checks, and release confidence
 - `$backlog-management` and `$github-projects` for delivery tracking
+
+`$memory-bank` and `$project-developer` are also suitable as implicit core skills for normal project work.
 
 ## Installation
 

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Review Verification"
+  short_description: "Review changes and verify regressions"
+  default_prompt: "Use $review-verification to review the change set, identify behavioral risks, and summarize what was verified versus what remains uncertain."
+
+policy:
+  allow_implicit_invocation: false

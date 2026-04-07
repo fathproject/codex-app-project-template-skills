@@ -73,7 +73,9 @@ memory/
 │   ├── project-developer/
 │   ├── project-initialization/
 │   ├── project-manager/
+│   ├── repo-discovery/
 │   ├── requirements-analysis/
+│   ├── review-verification/
 │   ├── team-roles/
 │   ├── team-setup/
 │   └── timeline-roadmap/
@@ -93,6 +95,8 @@ memory/
 - `memory-bank`: memory-first session workflow and update rules
 - `project-developer`: development workflow combining memory + implementation
 - `autonomous-agent`: end-to-end autonomous delivery mode
+- `repo-discovery`: fast technical map for unfamiliar repositories
+- `review-verification`: review and regression-focused verification pass
 
 ### Project Management
 
@@ -127,10 +131,14 @@ Run:
 
 That script creates symlinks for every skill into your Codex skills directory.
 
-Then start a new Codex thread and invoke a skill explicitly when useful, for example:
+Then start a new Codex thread. `memory-bank` and `project-developer` are configured to allow implicit invocation, while the rest are best invoked explicitly when useful.
+
+Examples:
 
 - `Use $memory-bank before we continue`
 - `Use $project-developer to implement the next feature`
+- `Use $repo-discovery to map this codebase first`
+- `Use $review-verification to review the latest changes`
 - `Use $autonomous-agent to drive this project from planning to delivery`
 
 ## Recommended Workflow

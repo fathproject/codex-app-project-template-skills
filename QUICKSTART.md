@@ -53,7 +53,9 @@ Typical prompts:
 
 - `Use $memory-bank and tell me what to do next`
 - `Use $project-developer to implement authentication`
+- `Use $repo-discovery to inspect this repository before coding`
 - `Use $requirements-analysis to turn this idea into a BRD and user stories`
+- `Use $review-verification to review the latest diff for regressions`
 - `Use $autonomous-agent to drive the project from planning to delivery`
 
 ## Session Rules
@@ -61,3 +63,5 @@ Typical prompts:
 1. Read `PROJECT.md` first.
 2. Check `DECISIONS.md` before making architectural changes.
 3. Update memory before ending the session.
+
+`memory-bank` and `project-developer` may be used implicitly by Codex because they are configured for automatic invocation.
