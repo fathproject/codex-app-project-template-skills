@@ -1,6 +1,6 @@
 ---
 name: requirements-analysis
-description: Requirements Analysis skill - AI creates comprehensive requirements documents including BRD, FRD, user stories, and acceptance criteria
+description: Use when formal BRD, FRD, or user-story artifacts are needed, but prefer the AI-team intake and scope skills for early discovery and convergence.
 version: 1.0.0
 created: 2026-04-07
 author: User
@@ -20,6 +20,18 @@ tags:
 ---
 
 # Requirements Analysis Skill
+
+## Status
+
+Supporting formal-document skill.
+
+For early-stage AI-team work, prefer:
+
+1. `client-intake-normalizer`
+2. `solution-options-tradeoffs`
+3. `scope-convergence`
+
+Use this skill after scope direction is stable enough to justify formal requirement artifacts.
 
 ## Overview
 

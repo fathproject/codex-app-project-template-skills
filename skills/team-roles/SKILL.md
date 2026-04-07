@@ -1,6 +1,6 @@
 ---
 name: team-roles
-description: AI Team Roles skill - AI acts as all project roles including Senior Developer, Junior Developer, UI/UX Designer, Tester, QA Engineer
+description: Use when a generic catalog of project roles is needed, but prefer ai-team-planner for concrete AI worker ownership and role allocation.
 version: 1.0.0
 created: 2026-04-07
 author: User
@@ -21,6 +21,12 @@ tags:
 ---
 
 # AI Team Roles Skill
+
+## Status
+
+Supporting legacy role-catalog skill.
+
+For the AI-team operating model, prefer `ai-team-planner` for the roster and `cross-agent-handover` for coordination.
 
 ## Overview
 

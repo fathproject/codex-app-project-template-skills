@@ -1,6 +1,6 @@
 ---
 name: timeline-roadmap
-description: Timeline & Roadmap skill - AI creates project timelines, phases, milestones, and roadmap with team allocation
+description: Use when a human-readable roadmap or milestone artifact is needed, but prefer ai-project-manager-orchestrator for live AI-team sequencing.
 version: 1.0.0
 created: 2026-04-07
 author: User
@@ -21,6 +21,12 @@ tags:
 ---
 
 # Timeline & Roadmap Skill
+
+## Status
+
+Supporting legacy roadmap skill.
+
+For the AI-team operating model, use `ai-project-manager-orchestrator` to sequence workstreams, then use this skill only when a human-readable roadmap artifact is still needed.
 
 ## Overview
 

@@ -60,6 +60,20 @@ It combines:
 - `$docs-sync-handover` for keeping memory and documentation aligned
 - `$backlog-management` and `$github-projects` for delivery tracking
 
+Primary AI-team path:
+
+`$client-intake-normalizer -> $solution-options-tradeoffs -> $scope-convergence -> $ai-project-manager-orchestrator -> $ai-team-planner -> $task-assignment-governance -> $github-traceability-board-sync -> $cross-agent-handover`
+
+Legacy or supporting skills:
+
+- `$autonomous-agent`
+- `$project-manager`
+- `$team-setup`
+- `$team-roles`
+- `$timeline-roadmap`
+- `$github-integration`
+- `$github-projects`
+
 `$memory-bank` and `$project-developer` are also suitable as implicit core skills for normal project work.
 
 ## Installation

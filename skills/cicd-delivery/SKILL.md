@@ -1,6 +1,6 @@
 ---
 name: cicd-delivery
-description: CI/CD & Delivery skill - AI creates complete CI/CD pipelines for build, test, and deployment automation
+description: Use when CI/CD pipelines or delivery automation must be designed or updated, but pair it with release, security, and environment skills for production use.
 version: 1.0.0
 created: 2026-04-07
 author: User
@@ -23,6 +23,18 @@ tags:
 ---
 
 # CI/CD & Delivery Skill
+
+## Status
+
+Supporting delivery-automation skill.
+
+Use it together with:
+
+1. `infra-environments`
+2. `security-production-readiness`
+3. `qa-e2e-release`
+
+This skill is strongest once the stack and release path are already known.
 
 ## Overview
 

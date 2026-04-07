@@ -41,6 +41,63 @@ The AI PM should:
 4. Monitor progress, blockers, and review gates.
 5. Re-sequence work when assumptions change.
 
+Use this sequence when the project is starting from raw client material:
+
+1. `$client-intake-normalizer`
+2. `$solution-options-tradeoffs`
+3. `$scope-convergence`
+4. `$ai-team-planner`
+5. `$task-assignment-governance`
+6. `$github-traceability-board-sync`
+
+## Output Contract
+
+Produce a PM control packet in this structure:
+
+```md
+# AI PM Control Packet
+
+## Current Phase
+- discovery / planning / implementation / review / release
+
+## Current Priority
+- The single highest-leverage focus right now
+
+## Active Work Program
+- Workstream 1
+- Workstream 2
+
+## Required AI Roles
+- ai-project-manager
+- ai-backend-01
+- ai-frontend-01
+- ai-qa-01
+
+## Workstream Order
+1. First workstream
+2. Second workstream
+3. Third workstream
+
+## Blockers And Risks
+- Blocker or risk 1
+- Blocker or risk 2
+
+## Management Actions
+- Assign
+- Re-sequence
+- Escalate
+- Hold
+
+## Recommended Next Skill
+- Which skill should be invoked next
+```
+
+## Management Rules
+
+- Only one current priority should exist at a time.
+- Do not start downstream execution if upstream scope or contract decisions are still unstable.
+- Reassignment should happen only when a worker is blocked, overloaded, or no longer the best owner.
+
 ## Output Format
 
 Produce:

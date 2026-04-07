@@ -1,6 +1,6 @@
 ---
 name: project-initialization
-description: Master skill - Complete project initialization workflow from zero to sprint-ready with GitHub setup
+description: Use when a brand-new project needs initial setup artifacts, but prefer the AI-team intake and orchestration skills for the primary delivery flow.
 version: 1.0.0
 created: 2026-04-07
 author: User
@@ -20,6 +20,20 @@ tags:
 ---
 
 # Project Initialization Skill - Master Workflow
+
+## Status
+
+Supporting legacy initialization skill.
+
+For the AI-team operating model, prefer:
+
+1. `client-intake-normalizer`
+2. `solution-options-tradeoffs`
+3. `scope-convergence`
+4. `ai-project-manager-orchestrator`
+5. `ai-team-planner`
+6. `backlog-management`
+7. `task-assignment-governance`
 
 ## Overview
 

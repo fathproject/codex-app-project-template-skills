@@ -30,6 +30,39 @@ Use this skill to turn many ideas into a buildable scope.
 4. Record assumptions and remaining blockers.
 5. Produce an execution-ready scope handoff.
 
+## Output Contract
+
+Use this scope decision package:
+
+```md
+# Scope Decision
+
+## MVP Scope
+- Feature 1
+- Feature 2
+
+## Deferred Scope
+- Feature or workstream to move later
+
+## Non-Goals
+- Explicitly excluded work
+
+## Assumptions
+- Assumption 1
+- Assumption 2
+
+## Blocking Questions
+- Question 1
+- Question 2
+
+## Engineering Readiness
+- Ready now / not ready yet
+- Why
+
+## Recommended Next Step
+- Usually: `$ai-project-manager-orchestrator`
+```
+
 ## Output Format
 
 Produce:
@@ -45,3 +78,4 @@ Produce:
 - Scope should get smaller and clearer, not broader.
 - Nice-to-have features belong outside the MVP unless they change adoption or safety.
 - If the scope is still fuzzy, say it is not ready for engineering.
+- The output must end with a clear go or no-go for execution.

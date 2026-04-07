@@ -1,6 +1,6 @@
 ---
 name: team-setup
-description: Team Setup skill - AI defines team structure, roles, responsibilities, capacity, and resource planning
+description: Use when a generic team structure or capacity plan is needed, but prefer ai-team-planner for the logical AI-team operating model.
 version: 1.0.0
 created: 2026-04-07
 author: User
@@ -19,6 +19,12 @@ tags:
 ---
 
 # Team Setup Skill
+
+## Status
+
+Supporting legacy team-planning skill.
+
+For the AI-team operating model, prefer `ai-team-planner`.
 
 ## Overview
 

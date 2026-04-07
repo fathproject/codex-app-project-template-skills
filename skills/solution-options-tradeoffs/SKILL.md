@@ -29,6 +29,53 @@ Use this skill when the AI should explore multiple valid paths before choosing o
 3. Compare them on value, effort, risk, dependency shape, and long-term flexibility.
 4. Recommend one direction with reasons.
 
+## Output Contract
+
+Use a compact option matrix rather than loose prose:
+
+```md
+# Decision Analysis
+
+## Decision Statement
+- The exact choice being made
+
+## Option A
+- Summary
+- Strengths
+- Risks
+- Dependencies
+- Effort
+
+## Option B
+- Summary
+- Strengths
+- Risks
+- Dependencies
+- Effort
+
+## Option C
+- Summary
+- Strengths
+- Risks
+- Dependencies
+- Effort
+
+## Comparison Matrix
+| Option | Value | Effort | Risk | Dependency Shape | Flexibility |
+|--------|-------|--------|------|------------------|-------------|
+| A | high | medium | medium | simple | medium |
+| B | medium | low | low | simple | low |
+| C | high | high | high | complex | high |
+
+## Recommendation
+- Preferred option
+- Why it wins
+- What is explicitly being traded away
+
+## Recommended Next Step
+- Usually: `$scope-convergence`
+```
+
 ## Output Format
 
 Produce:
@@ -43,3 +90,4 @@ Produce:
 - Do not produce fake variety where options are basically the same.
 - If one option clearly dominates, say so.
 - Keep tradeoffs concrete rather than abstract.
+- Every recommendation should say what is not being chosen and why.

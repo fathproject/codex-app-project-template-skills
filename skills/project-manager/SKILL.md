@@ -1,6 +1,6 @@
 ---
 name: project-manager
-description: AI Project Manager skill - AI acts as full project manager handling planning, coordination, stakeholder management, and project execution
+description: Use when a general project-management perspective is needed, but prefer the AI-team orchestration skills for structured multi-role delivery.
 version: 1.0.0
 created: 2026-04-07
 author: User
@@ -20,6 +20,19 @@ tags:
 ---
 
 # AI Project Manager Skill
+
+## Status
+
+Supporting legacy PM skill.
+
+For the AI-team operating model, prefer:
+
+1. `ai-project-manager-orchestrator`
+2. `ai-team-planner`
+3. `task-assignment-governance`
+4. `github-traceability-board-sync`
+
+Use this skill only when a generic project-management perspective is needed without full AI-team orchestration.
 
 ## Role Overview
 
@@ -102,28 +115,13 @@ You are the **AI Project Manager**. You handle all project management tasks incl
 4. Archive project
 ```
 
-## GitHub Integration
+## AI Team Note
 
-### Automated Actions
-- Create issues from backlog
-- Update project board
-- Create milestones
-- Generate progress reports
+If logical AI workers and one shared GitHub account are in use, hand ownership and board operations to:
 
-### Commands
-```bash
-# Create GitHub Project
-gh project create --title "Project Name" --owner "username"
-
-# Create issue
-gh issue create --title "Issue title" --body "Description" --label "feature"
-
-# Create milestone
-gh issue milestone create --title "Sprint 1" --due "2024-01-15"
-
-# Add to project
-gh issue edit 1 --project "Project Name" --milestone "Sprint 1"
-```
+- `task-assignment-governance`
+- `github-traceability-board-sync`
+- `cross-agent-handover`
 
 ## Metrics to Track
 

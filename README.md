@@ -129,6 +129,10 @@ memory/
 - `github-traceability-board-sync`
 - `cross-agent-handover`
 
+Primary AI-team sequence:
+
+`client-intake-normalizer -> solution-options-tradeoffs -> scope-convergence -> ai-project-manager-orchestrator -> ai-team-planner -> task-assignment-governance -> github-traceability-board-sync -> cross-agent-handover`
+
 ### Project Management
 
 - `project-manager`
@@ -138,6 +142,8 @@ memory/
 - `team-roles`
 - `timeline-roadmap`
 - `backlog-management`
+
+These are now mostly supporting or legacy PM skills around the AI-team core flow.
 
 ### Delivery And Operations
 
@@ -185,6 +191,7 @@ Examples:
 - `Use $task-assignment-governance to turn the plan into owned AI tasks`
 - `Use $github-traceability-board-sync to reflect AI ownership in GitHub`
 - `Use $cross-agent-handover to hand work from one AI role to another`
+- `Use $backlog-management to turn approved scope into delivery backlog slices`
 - `Use $memory-bank before we continue`
 - `Use $project-developer to implement the next feature`
 - `Use $repo-discovery to map this codebase first`

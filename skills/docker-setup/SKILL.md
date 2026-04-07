@@ -1,6 +1,6 @@
 ---
 name: docker-setup
-description: Docker Setup skill - AI creates production-ready Docker configurations with multi-stage builds, security, and optimization
+description: Use when containerization or Docker runtime setup is required, but pair it with environment and security skills before treating it as production-ready.
 version: 1.0.0
 created: 2026-04-07
 author: User
@@ -20,6 +20,18 @@ tags:
 ---
 
 # Docker Setup Skill
+
+## Status
+
+Supporting containerization skill.
+
+Use it together with:
+
+1. `infra-environments`
+2. `security-production-readiness`
+3. `cicd-delivery`
+
+This skill is strongest when the target runtime, deployment path, and secret model are already known.
 
 ## Overview
 

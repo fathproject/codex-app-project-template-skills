@@ -37,6 +37,50 @@ Use this skill to turn messy client input into a brief the AI team can actually 
 4. Flag contradictions and missing decisions.
 5. Produce an execution-ready brief for the next planning skill.
 
+## Output Contract
+
+Use this structure so the next skill can continue without re-reading the raw client material:
+
+```md
+# Normalized Client Brief
+
+## Problem Statement
+- What business or user problem must be solved
+
+## Goals
+- Goal 1
+- Goal 2
+
+## Requested Outcomes
+- Requested feature or result 1
+- Requested feature or result 2
+
+## Target Users
+- Primary user
+- Secondary user
+
+## Constraints
+- Budget, time, stack, compliance, or delivery constraints
+
+## Facts
+- Confirmed fact 1
+- Confirmed fact 2
+
+## Assumptions
+- Assumption 1
+- Assumption 2
+
+## Open Questions
+- Critical unanswered question 1
+- Critical unanswered question 2
+
+## Contradictions
+- Statement conflict or unclear point
+
+## Recommended Next Step
+- Usually: `$solution-options-tradeoffs` or `$scope-convergence`
+```
+
 ## Output Format
 
 Produce:
@@ -52,3 +96,4 @@ Produce:
 - Do not jump to architecture or implementation.
 - Preserve client intent even when the input is messy.
 - Ask only the smallest number of critical follow-up questions.
+- Facts, assumptions, and open questions must never be mixed together.

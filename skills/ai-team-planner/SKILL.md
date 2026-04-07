@@ -39,6 +39,38 @@ Use this skill to define the logical AI team for a project.
 - DevOps or Infra Engineer
 - Docs or Handover Owner
 
+## Output Contract
+
+Use this roster package:
+
+```md
+# AI Team Plan
+
+## Proposed Roster
+| AI Worker | AI Role | Owns | Reviews With | Start Condition |
+|-----------|---------|------|--------------|-----------------|
+| ai-project-manager | project-manager | orchestration | n/a | immediately |
+| ai-backend-01 | backend-engineer | auth API | ai-qa-01 | scope approved |
+| ai-frontend-01 | frontend-engineer | login UI | ai-qa-01 | API contract stable |
+
+## Workstream Ownership
+- Workstream: auth foundation -> ai-backend-01
+- Workstream: login UX -> ai-frontend-01
+
+## Dependency Notes
+- Frontend waits for API contract
+- QA starts after backend and frontend verification
+
+## Review Path
+- backend -> qa
+- frontend -> qa
+- docs -> project manager
+
+## First Assignments
+- Assignment 1
+- Assignment 2
+```
+
 ## Output Format
 
 Produce:
@@ -53,3 +85,4 @@ Produce:
 - Add roles only when they change delivery capacity or risk.
 - One person can cover multiple logical AI roles on small projects.
 - Large projects still need clear ownership boundaries.
+- Every proposed worker should have a start condition, not just a role name.

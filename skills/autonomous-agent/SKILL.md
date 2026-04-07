@@ -1,6 +1,6 @@
 ---
 name: autonomous-agent
-description: Master autonomous software delivery agent - operates independently from initiation to delivery, acting as all required roles (PM, BA, Architect, Developer, QA, DevOps)
+description: Use only when one agent should drive the entire project end to end; prefer the AI-team orchestration skills when work should be split into logical roles.
 version: 1.0.0
 created: 2026-04-07
 author: User
@@ -19,6 +19,23 @@ tags:
 ---
 
 # Autonomous Software Delivery Agent
+
+## Status
+
+Advanced legacy meta-skill.
+
+Use this only when one agent must drive the entire project end to end.
+
+For the structured AI-team model, prefer:
+
+1. `client-intake-normalizer`
+2. `solution-options-tradeoffs`
+3. `scope-convergence`
+4. `ai-project-manager-orchestrator`
+5. `ai-team-planner`
+6. `task-assignment-governance`
+7. `github-traceability-board-sync`
+8. `cross-agent-handover`
 
 ## System Prompt (Production-Ready)
 
