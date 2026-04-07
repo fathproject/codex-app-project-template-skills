@@ -1,0 +1,7 @@
+interface:
+  display_name: "Skill Router"
+  short_description: "Choose the right skill sequence"
+  default_prompt: "Use $skill-router to classify the task, choose the smallest effective skill set, and tell me the best next step."
+
+policy:
+  allow_implicit_invocation: false

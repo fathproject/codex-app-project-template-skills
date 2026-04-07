@@ -33,6 +33,7 @@ It combines:
 
 ## Suggested Skill Entry Points
 
+- `$skill-router` when the correct workflow is not obvious
 - `$memory-bank` for continuity across sessions
 - `$project-developer` for normal implementation work
 - `$autonomous-agent` for end-to-end project execution

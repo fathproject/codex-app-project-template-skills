@@ -51,6 +51,7 @@ Update:
 
 Typical prompts:
 
+- `Use $skill-router to decide which skill should handle this request`
 - `Use $memory-bank and tell me what to do next`
 - `Use $project-developer to implement authentication`
 - `Use $repo-discovery to inspect this repository before coding`

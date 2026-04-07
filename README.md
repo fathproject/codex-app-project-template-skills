@@ -76,6 +76,7 @@ memory/
 │   ├── repo-discovery/
 │   ├── requirements-analysis/
 │   ├── review-verification/
+│   ├── skill-router/
 │   ├── team-roles/
 │   ├── team-setup/
 │   └── timeline-roadmap/
@@ -92,6 +93,7 @@ memory/
 
 ### Core Workflow
 
+- `skill-router`: choose the smallest effective skill or skill sequence
 - `memory-bank`: memory-first session workflow and update rules
 - `project-developer`: development workflow combining memory + implementation
 - `autonomous-agent`: end-to-end autonomous delivery mode
@@ -135,6 +137,7 @@ Then start a new Codex thread. `memory-bank` and `project-developer` are configu
 
 Examples:
 
+- `Use $skill-router to choose the right workflow for this task`
 - `Use $memory-bank before we continue`
 - `Use $project-developer to implement the next feature`
 - `Use $repo-discovery to map this codebase first`
