@@ -13,6 +13,8 @@ Before doing anything substantial:
 
 Review additional `context/` and `requirements/` files when the task depends on them.
 
+For fresh projects, prefer `$ai-team` as the first-call entry skill. Internal workflow modules should normally stay behind `ai-team` rather than being treated as separate public skills.
+
 ## Working Rules
 
 - Understand the current project state before making changes.

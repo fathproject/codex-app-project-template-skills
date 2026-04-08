@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI TEAM"
+  short_description: "Bootstrap memory and choose the AI-team workflow"
+  default_prompt: "Use $ai-team to bootstrap project memory if needed, classify the task, choose the smallest effective AI-team skill path, and tell me the next move."
+
+policy:
+  allow_implicit_invocation: false

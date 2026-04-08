@@ -27,6 +27,7 @@ Use this skill when AI work must be assigned in a disciplined way rather than as
 1. Turn scope into assignable work units.
 2. Define owner, reviewer, dependency, and escalation path for each task.
 3. Make status transitions explicit so the AI PM can manage progress.
+4. Make completion-sync responsibility explicit for either GitHub or local-only tracking.
 
 ## Workflow
 
@@ -41,6 +42,9 @@ Use this skill when AI work must be assigned in a disciplined way rather than as
    - definition of done.
 5. Separate parallel work from sequential work.
 6. Mark tasks that should not start until prerequisites are complete.
+7. Define the completion-sync action:
+   - GitHub issue and project update plus local memory, backlog, and milestone update when `tracking_mode=github_enabled`; or
+   - local backlog and memory update when `tracking_mode=local_only`.
 
 Use [docs/AI_TEAM_GITHUB_OPERATIONS.md](../../docs/AI_TEAM_GITHUB_OPERATIONS.md) when the GitHub board conventions need to be applied consistently.
 
@@ -66,6 +70,11 @@ Use this assignment packet:
 - In Review
 - In QA
 
+## Completion Sync
+- Task done -> update GitHub card immediately
+- Task done -> also update local memory and planning files when GitHub is enabled
+- or Task done -> update local backlog and memory immediately
+
 ## Escalation Rules
 - If blocked by contract -> AI PM
 - If blocked by infra -> infra owner
@@ -90,3 +99,4 @@ Produce:
 - Every task should have exactly one primary logical owner.
 - Dependencies should be explicit, not implied.
 - Every task should expose a next handoff target when applicable.
+- Every task should declare how completion gets recorded.

@@ -26,7 +26,13 @@ mv TEMPLATE.md PROJECT.md
 ./scripts/install-skills.sh
 ```
 
-This links each folder in `skills/` into `${CODEX_HOME:-$HOME/.codex}/skills/`.
+This installs the public `ai-team` skill into `${CODEX_HOME:-$HOME/.codex}/skills/`.
+
+If you want every internal workflow module exposed separately for maintenance work:
+
+```bash
+./scripts/install-skills.sh --all
+```
 
 ## 3. Customize The Memory Bank
 
@@ -48,7 +54,14 @@ Update:
 
 ## 5. Use It In Codex
 
-For a brand new project, start with `$skill-router`. It will bootstrap `./memory/` automatically when the current project does not already have `memory/PROJECT.md` or `PROJECT.md`, and it will initialize a fresh `memory/PROJECT.md` from `TEMPLATE.md`.
+For a brand new project, start with `$ai-team`. It will bootstrap `./memory/` automatically when the current project does not already have `memory/PROJECT.md` or `PROJECT.md`, and it will initialize a fresh `memory/PROJECT.md` from `TEMPLATE.md`.
+
+AI TEAM should also decide the execution mode up front:
+
+- `github_enabled` if the project should use GitHub issues, boards, and remote version control
+- `local_only` if the user does not want GitHub and all tracking should stay local
+
+Even in `github_enabled`, AI TEAM should still update `memory/PROJECT.md`, `backlog/BACKLOG.md`, and `timeline/ROADMAP.md` as part of task completion.
 
 Main AI-team flow reference:
 
@@ -56,26 +69,10 @@ Main AI-team flow reference:
 
 Typical prompts:
 
-- `Use $skill-router to decide which skill should handle this request`
-- `Use $client-intake-normalizer to turn this client discussion into a brief`
-- `Use $solution-options-tradeoffs to compare the best product or technical approaches`
-- `Use $scope-convergence to decide what belongs in the MVP`
-- `Use $ai-project-manager-orchestrator to run this as an AI-managed project`
-- `Use $ai-team-planner to size the AI team for this project`
-- `Use $task-assignment-governance to define AI task ownership and dependencies`
-- `Use $github-traceability-board-sync to map AI worker identity into GitHub`
-- `Use $cross-agent-handover to prepare the next AI worker handoff`
-- `Use $memory-bank and tell me what to do next`
-- `Use $project-developer to implement authentication`
-- `Use $repo-discovery to inspect this repository before coding`
-- `Use $requirements-analysis to turn this idea into a BRD and user stories`
-- `Use $review-verification to review the latest diff for regressions`
-- `Use $debugging-incident to investigate a flaky production bug`
-- `Use $database-schema-migrations to plan a safe schema rollout`
-- `Use $api-contract-integration to review an API breaking change`
-- `Use $auth-identity to design roles and login flows`
-- `Use $frontend-ui-states to complete a screen beyond the happy path`
-- `Use $autonomous-agent to drive the project from planning to delivery`
+- `Use $ai-team to bootstrap this project and choose the right workflow`
+- `Use $ai-team to report milestone progress and compare AI versus human ETA`
+- `Use $ai-team to investigate this codebase before coding`
+- `Use $ai-team to run this project as an AI-managed workflow`
 
 ## Session Rules
 
@@ -83,4 +80,4 @@ Typical prompts:
 2. Check `DECISIONS.md` before making architectural changes.
 3. Update memory before ending the session.
 
-`memory-bank` and `project-developer` may be used implicitly by Codex because they are configured for automatic invocation.
+Internal modules such as `memory-bank`, `project-developer`, and `review-verification` stay in the repo and are meant to be loaded by `ai-team` as needed. They may be installed separately only with `--all`.

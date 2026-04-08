@@ -41,6 +41,12 @@ For normal AI-team execution, prefer:
 2. Confirm authentication, repository settings, and baseline labels.
 3. Ensure issues, PRs, and projects can reflect logical AI ownership.
 
+## Mode Gate
+
+Use this skill only when `tracking_mode=github_enabled`.
+
+If the project is `local_only`, do not require GitHub auth and do not perform GitHub setup work.
+
 ## Workflow
 
 1. Check authentication and repository access.
@@ -69,3 +75,4 @@ Produce:
 - Assume one shared GitHub account is acceptable.
 - Do not design a separate ownership model outside `AI_TEAM_GITHUB_OPERATIONS.md`.
 - If the repository already has the required templates and settings, stop and hand off.
+- If `tracking_mode=local_only`, stop immediately and hand tracking back to local memory and backlog files.

@@ -20,6 +20,10 @@ tags:
 
 # Skill Router
 
+Supporting routing alias.
+
+For this skill pack, prefer `ai-team` as the canonical first-call entry point.
+
 Use this skill to choose the right skill or skill sequence before doing deeper work.
 
 ## Purpose
@@ -35,7 +39,7 @@ Its job is to:
 
 ## Entry Point Requirement
 
-Treat `skill-router` as the preferred entry point when a project is new, unfamiliar, or has not been initialized with local memory.
+Treat `skill-router` as a compatible routing entry point when a project is new, unfamiliar, or has not been initialized with local memory.
 
 Before routing:
 
@@ -44,6 +48,8 @@ Before routing:
 3. After bootstrapping, read `memory/PROJECT.md` and route from that state instead of routing blind.
 
 Do not ask the user whether to create `memory/` first. The router should create it automatically so the project gets a recorded working history from the first session.
+
+When possible, recommend `ai-team` as the named entry point for the skill pack.
 
 ## Routing Rules
 
@@ -77,6 +83,7 @@ Prefer the shortest path that can solve the task.
 - For auth changes: `auth-identity -> project-developer -> security-production-readiness`
 - For schema changes: `database-schema-migrations -> project-developer -> review-verification`
 - For environment or deploy work: `infra-environments -> cicd-delivery -> qa-e2e-release`
+- For milestone progress, ETA, or AI-vs-human reporting: `ai-project-manager-orchestrator -> github-traceability-board-sync -> delivery-analytics-forecast`
 - For documentation closure: `docs-sync-handover -> memory-bank`
 
 Do not select many skills unless each one clearly adds value.
@@ -104,6 +111,7 @@ Choose the best fit from these patterns:
 | Requirements and scope | `requirements-analysis` |
 | Backlog and sprint planning | `backlog-management` |
 | Roadmap and milestones | `timeline-roadmap` |
+| Delivery progress, ETA, or AI-vs-human comparison | `delivery-analytics-forecast` |
 | Team structure and role coverage | `team-setup` or `team-roles` |
 | GitHub repository operations | `github-integration` |
 | GitHub project board work | `github-projects` |

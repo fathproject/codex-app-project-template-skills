@@ -25,6 +25,7 @@ It combines:
 - Update decisions when rationale changes.
 - Keep backlog, roadmap, and requirements in sync with the real state of the project.
 - Use the appropriate installed skill from `skills/`.
+- Establish whether the project is `github_enabled` or `local_only` before invoking deeper workflow modules.
 
 ### At Session End
 
@@ -34,37 +35,24 @@ It combines:
 
 ## Suggested Skill Entry Points
 
-- `$skill-router` when the correct workflow is not obvious
-- `$skill-router` as the preferred first call for a fresh project because it bootstraps `memory/` if needed
-- `$client-intake-normalizer` for raw client notes, chats, and meeting materials
-- `$solution-options-tradeoffs` for comparing possible directions
-- `$scope-convergence` for locking MVP boundaries
-- `$ai-project-manager-orchestrator` for AI-led delivery orchestration
-- `$ai-team-planner` for defining the logical AI team
-- `$task-assignment-governance` for owned tasks, reviewers, and dependencies
-- `$github-traceability-board-sync` for GitHub issue and board visibility
-- `$cross-agent-handover` for structured transitions between AI roles
-- `$memory-bank` for continuity across sessions
-- `$project-developer` for normal implementation work
-- `$autonomous-agent` for end-to-end project execution
-- `$repo-discovery` for unfamiliar repositories or inherited codebases
-- `$requirements-analysis` for discovery and planning
-- `$review-verification` for code review, regression checks, and release confidence
-- `$debugging-incident` for hard bugs and incidents
-- `$qa-e2e-release` for release gates and critical-flow verification
-- `$security-production-readiness` for hardening and pre-release risk review
-- `$observability-monitoring` for logs, metrics, and alerts
-- `$database-schema-migrations` for persistent data changes
-- `$api-contract-integration` for interface and compatibility work
-- `$auth-identity` for auth, RBAC, and account lifecycle changes
-- `$frontend-ui-states` for non-happy-path UX coverage
-- `$infra-environments` for environment and deployment topology
-- `$docs-sync-handover` for keeping memory and documentation aligned
-- `$backlog-management` and `$github-projects` for delivery tracking
+- `$ai-team` as the primary first call for this skill pack
+- Internal workflow modules are kept in the repository and should normally be loaded by `ai-team` rather than invoked as separate public skills.
+- Install with `./scripts/install-skills.sh --all` only if you intentionally want every internal module exposed separately.
 
 Primary AI-team path:
 
-`$client-intake-normalizer -> $solution-options-tradeoffs -> $scope-convergence -> $ai-project-manager-orchestrator -> $ai-team-planner -> $task-assignment-governance -> $github-traceability-board-sync -> $cross-agent-handover`
+`$ai-team -> $client-intake-normalizer -> $solution-options-tradeoffs -> $scope-convergence -> $ai-project-manager-orchestrator -> $ai-team-planner -> $task-assignment-governance -> $github-traceability-board-sync -> $delivery-analytics-forecast -> $cross-agent-handover`
+
+If the user does not want GitHub:
+
+- keep tracking local;
+- skip GitHub modules; and
+- use memory, backlog, roadmap, and local git only.
+
+If the user does want GitHub:
+
+- sync GitHub immediately on task completion; and
+- still keep `memory/PROJECT.md`, `backlog/BACKLOG.md`, and `timeline/ROADMAP.md` aligned locally.
 
 The canonical flow and packet handoff model are documented in `docs/AI_TEAM_SKILL_FLOW.md`.
 
@@ -78,8 +66,8 @@ Legacy or supporting skills:
 - `$github-integration`
 - `$github-projects`
 
-`$memory-bank` and `$project-developer` are also suitable as implicit core skills for normal project work.
+Inside AI TEAM, internal workflow modules such as `memory-bank`, `project-developer`, `review-verification`, and `delivery-analytics-forecast` remain available as reference modules.
 
 ## Installation
 
-Run `./scripts/install-skills.sh` from the repository root to link the skills into Codex.
+Run `./scripts/install-skills.sh` from the repository root to install the public `ai-team` skill into Codex. Use `./scripts/install-skills.sh --all` only for maintenance mode.

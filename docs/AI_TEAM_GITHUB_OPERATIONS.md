@@ -18,6 +18,28 @@ One GitHub account is acceptable.
 
 Logical AI identity must be expressed through metadata, not through multiple GitHub users.
 
+## Execution Modes
+
+### `github_enabled`
+
+Use this mode when the project should sync work into GitHub directly.
+
+Requirements:
+
+- local `git`
+- GitHub auth via `gh` CLI, token, or OAuth
+- access to the repository and GitHub Project
+
+### `local_only`
+
+Use this mode when the user does not want GitHub involved.
+
+Rules:
+
+- do not require GitHub auth;
+- do not create or update issues, PRs, or project cards; and
+- keep all tracking in local memory and planning files instead.
+
 ## Required GitHub Project Fields
 
 Create fields like these in GitHub Projects:
@@ -48,6 +70,24 @@ Use a clear workflow such as:
 6. `In Handover`
 7. `Blocked`
 8. `Done`
+
+## Completion Sync Rule
+
+In `github_enabled` mode, every completed task must update GitHub immediately.
+
+Minimum required sync:
+
+1. update the issue or PR state;
+2. move the GitHub Project card to the correct status;
+3. keep `AI Worker`, `Managed By`, and other metadata current; and
+4. preserve any handoff target if the task is complete but still awaiting another AI role;
+5. update `memory/PROJECT.md`;
+6. update `backlog/BACKLOG.md` when backlog state changed; and
+7. update `timeline/ROADMAP.md` when milestone or schedule state changed.
+
+Do not batch card updates for later if the task is already marked complete locally.
+
+GitHub is the operational surface. Local memory is still the long-term project memory and must stay aligned.
 
 ## Issue Template Usage
 

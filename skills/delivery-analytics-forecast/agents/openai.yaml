@@ -1,0 +1,7 @@
+interface:
+  display_name: "Delivery Analytics"
+  short_description: "Measure milestone progress and forecast ETA"
+  default_prompt: "Use $delivery-analytics-forecast to calculate weighted milestone progress, estimate AI and human completion dates, and report delivery health."
+
+policy:
+  allow_implicit_invocation: false

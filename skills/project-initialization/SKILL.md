@@ -35,6 +35,15 @@ For the AI-team operating model, prefer:
 6. `backlog-management`
 7. `task-assignment-governance`
 
+Use this legacy setup skill only when the project explicitly needs setup work outside the standard AI TEAM flow.
+
+## Mode Gate
+
+- Use GitHub setup steps only when `tracking_mode=github_enabled`.
+- If the user does not want GitHub, skip auth, repo creation, project board creation, and GitHub milestones.
+- If the project is new and GitHub is enabled, create a new repo.
+- If the project already has a usable repository, reuse the existing one instead of creating another.
+
 ## Overview
 
 This is the **master skill** that orchestrates the complete project setup workflow. Use this skill when starting a new project to automatically:

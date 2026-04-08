@@ -1,6 +1,14 @@
 # AI Team Skill Flow
 
-This document defines the intended flow between the active Codex skills in this repository.
+This document defines the intended internal flow for AI TEAM.
+
+Public surface:
+
+- `ai-team`
+
+Internal workflow modules:
+
+- the sibling skill folders under `skills/`
 
 ## Core Principle
 
@@ -12,11 +20,19 @@ Every active skill should do three things clearly:
 
 ## Primary Flow
 
+### 0. Entry Point
+
+1. `ai-team`
+
+Compatibility alias kept in the repo:
+
+- `skill-router`
+
 ### 1. Intake And Scope
 
-1. `client-intake-normalizer`
-2. `solution-options-tradeoffs`
-3. `scope-convergence`
+2. `client-intake-normalizer`
+3. `solution-options-tradeoffs`
+4. `scope-convergence`
 
 Artifacts:
 
@@ -26,11 +42,11 @@ Artifacts:
 
 ### 2. Orchestration And Team Formation
 
-4. `ai-project-manager-orchestrator`
-5. `ai-team-planner`
-6. `backlog-management`
-7. `task-assignment-governance`
-8. `github-traceability-board-sync`
+5. `ai-project-manager-orchestrator`
+6. `ai-team-planner`
+7. `backlog-management`
+8. `task-assignment-governance`
+9. `github-traceability-board-sync`
 
 Artifacts:
 
@@ -40,19 +56,27 @@ Artifacts:
 - assignment packet
 - traceability packet
 
-### 3. Implementation And Delivery
+### 3. Oversight And Forecasting
 
-9. `memory-bank`
-10. `repo-discovery` when needed
-11. domain skills such as:
+10. `delivery-analytics-forecast` when milestone progress, ETA, or AI-versus-human comparison is needed
+
+Artifacts:
+
+- delivery analytics packet
+
+### 4. Implementation And Delivery
+
+11. `memory-bank`
+12. `repo-discovery` when needed
+13. domain skills such as:
    - `api-contract-integration`
    - `auth-identity`
    - `frontend-ui-states`
    - `infra-environments`
    - `database-schema-migrations`
    - `observability-monitoring`
-12. `project-developer`
-13. `review-verification`
+14. `project-developer`
+15. `review-verification`
 
 Artifacts:
 
@@ -62,12 +86,12 @@ Artifacts:
 - implementation packet
 - verification packet
 
-### 4. Release, Security, And Closure
+### 5. Release, Security, And Closure
 
-14. `qa-e2e-release`
-15. `security-production-readiness`
-16. `docs-sync-handover`
-17. `cross-agent-handover` when another AI role continues
+16. `qa-e2e-release`
+17. `security-production-readiness`
+18. `docs-sync-handover`
+19. `cross-agent-handover` when another AI role continues
 
 Artifacts:
 
@@ -88,9 +112,11 @@ Use this for bugs, incidents, or flaky behavior:
 
 ## Routing Entry Point
 
-Use `skill-router` when the starting path is unclear.
+Use `ai-team` as the primary starting point when the path is unclear.
 
-The router should choose the smallest valid path and prefer the active AI-team flow over legacy PM skills.
+`skill-router` remains a compatible alias.
+
+The entry skill should choose the smallest valid path and prefer the active AI-team flow over legacy PM skills.
 
 ## Legacy And Supporting Skills
 

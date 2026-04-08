@@ -2,7 +2,7 @@
 
 A Codex-native port of the `goldfanatictrader/app-template` repository.
 
-This repository is a self-contained project memory bank template plus a reusable Codex skill pack. Copy or clone it into a project as `memory/`, or let `$skill-router` and `$memory-bank` bootstrap `memory/` automatically into the current project. The bootstrap flow initializes a fresh `memory/PROJECT.md` from `TEMPLATE.md` so each project starts with its own memory history.
+This repository is a self-contained project memory bank template plus a reusable Codex skill pack. Copy or clone it into a project as `memory/`, or let `$ai-team`, `$skill-router`, and `$memory-bank` bootstrap `memory/` automatically into the current project. The bootstrap flow initializes a fresh `memory/PROJECT.md` from `TEMPLATE.md` so each project starts with its own memory history.
 
 ## What Changed From The OpenCode Version
 
@@ -61,6 +61,7 @@ memory/
 │   ├── CHARTER.md
 │   └── USER_STORIES.md
 ├── skills/
+│   ├── ai-team/
 │   ├── ai-project-manager-orchestrator/
 │   ├── ai-team-planner/
 │   ├── autonomous-agent/
@@ -70,6 +71,7 @@ memory/
 │   ├── coding-assistant/
 │   ├── cross-agent-handover/
 │   ├── database-schema-migrations/
+│   ├── delivery-analytics-forecast/
 │   ├── debugging-incident/
 │   ├── docs-sync-handover/
 │   ├── docker-setup/
@@ -108,14 +110,15 @@ memory/
 
 ## Codex Skills Included
 
-### Core Workflow
+### Public Skill
 
-- `skill-router`: choose the smallest effective skill or skill sequence
-- `memory-bank`: memory-first session workflow and update rules
-- `project-developer`: development workflow combining memory + implementation
-- `autonomous-agent`: end-to-end autonomous delivery mode
-- `repo-discovery`: fast technical map for unfamiliar repositories
-- `review-verification`: review and regression-focused verification pass
+- `ai-team`: primary entry point for the AI TEAM skill pack
+
+By default, this is the only skill installed into Codex from this repository.
+
+### Internal Workflow Modules
+
+The repo still keeps the underlying workflow modules as separate folders for maintainability, but they are intended to run under `ai-team` unless you explicitly install all skills.
 
 ### AI Team Orchestration
 
@@ -126,11 +129,12 @@ memory/
 - `ai-team-planner`
 - `task-assignment-governance`
 - `github-traceability-board-sync`
+- `delivery-analytics-forecast`
 - `cross-agent-handover`
 
 Primary AI-team sequence:
 
-`client-intake-normalizer -> solution-options-tradeoffs -> scope-convergence -> ai-project-manager-orchestrator -> ai-team-planner -> task-assignment-governance -> github-traceability-board-sync -> cross-agent-handover`
+`ai-team -> client-intake-normalizer -> solution-options-tradeoffs -> scope-convergence -> ai-project-manager-orchestrator -> ai-team-planner -> task-assignment-governance -> github-traceability-board-sync -> delivery-analytics-forecast -> cross-agent-handover`
 
 Full active flow reference: [docs/AI_TEAM_SKILL_FLOW.md](docs/AI_TEAM_SKILL_FLOW.md)
 
@@ -179,14 +183,36 @@ Run:
 ./scripts/install-skills.sh
 ```
 
-That script creates symlinks for every skill into your Codex skills directory.
+That script installs the public AI TEAM skill only.
 
-For a fresh project, use `$skill-router` as the first skill entry point. It now bootstraps `./memory/` from this template automatically when the current project has neither `./memory/PROJECT.md` nor `./PROJECT.md`.
+If you are maintaining the pack and want every internal module exposed separately, run:
+
+```bash
+./scripts/install-skills.sh --all
+```
+
+For a fresh project, use `$ai-team` as the first skill entry point. It bootstraps `./memory/` from this template automatically when the current project has neither `./memory/PROJECT.md` nor `./PROJECT.md`.
+
+`$skill-router` remains available in the repo as a routing alias, but it is not installed publicly by default.
+
+`$ai-team` also establishes execution policy before deeper work starts:
+
+- `github_enabled` when the project should sync to GitHub
+- `local_only` when tracking should stay fully local
+
+If GitHub is enabled, completed work should sync the GitHub Project card immediately and still update local memory, backlog, and roadmap. If GitHub is disabled, tracking stays in local memory, backlog, roadmap, and optional local git.
+
+AI TEAM now includes deterministic enforcement scripts:
+
+- `./scripts/preflight-check.sh` to verify required tools and GitHub readiness
+- `./scripts/sync-completion.sh` to update local memory, backlog, and roadmap on task completion
+- `./scripts/sync-github-task.sh` to update GitHub issue and GitHub Project state when GitHub mode is enabled
 
 Then start a new Codex thread. `memory-bank` and `project-developer` are configured to allow implicit invocation, while the rest are best invoked explicitly when useful.
 
 Examples:
 
+- `Use $ai-team to bootstrap this project and choose the right workflow`
 - `Use $skill-router to choose the right workflow for this task`
 - `Use $client-intake-normalizer to structure these client notes`
 - `Use $solution-options-tradeoffs to compare solution paths`
@@ -195,6 +221,7 @@ Examples:
 - `Use $ai-team-planner to define the AI team roster`
 - `Use $task-assignment-governance to turn the plan into owned AI tasks`
 - `Use $github-traceability-board-sync to reflect AI ownership in GitHub`
+- `Use $delivery-analytics-forecast to report milestone progress and ETA`
 - `Use $cross-agent-handover to hand work from one AI role to another`
 - `Use $backlog-management to turn approved scope into delivery backlog slices`
 - `Use $memory-bank before we continue`

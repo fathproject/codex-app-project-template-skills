@@ -1,7 +1,7 @@
 interface:
   display_name: "Skill Router"
-  short_description: "Bootstrap memory and choose the right skill sequence"
-  default_prompt: "Use $skill-router to bootstrap project memory if needed, classify the task, choose the smallest effective skill set, and tell me the best next step."
+  short_description: "Routing alias for the AI TEAM entry workflow"
+  default_prompt: "Use $skill-router as a routing alias to bootstrap project memory if needed, classify the task, choose the smallest effective skill set, and tell me the best next step."
 
 policy:
   allow_implicit_invocation: false
