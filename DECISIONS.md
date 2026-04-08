@@ -215,6 +215,29 @@ When making a significant decision:
 
 **Implementation**: Added `scripts/preflight-check.sh`, `scripts/sync-completion.sh`, `scripts/sync-github-task.sh`, plus wrapper scripts under `skills/ai-team/scripts/`, and updated AI TEAM docs to reference them directly.
 
+### D007 - 2026-04-08: Add Operational Guardrails For Schema, Drift, Ownership, Onboarding, And Runner Control
+
+**Status**: Active
+**Made By**: codex
+**Related**: D004, D005, D006
+
+**Decision**: Add a second guardrail layer around AI TEAM to close the remaining operational blind spots: GitHub board schema validation, local-memory-versus-GitHub drift checks, multi-worker ownership validation, onboarding readiness checks, and a minimal guarded runner loop.
+
+**Context**: The first enforcement pass made preflight and completion sync deterministic, but real projects still had unclosed risk areas around GitHub board drift, worker ownership drift, onboarding gaps, and the absence of a minimal controlled runner.
+
+**Alternatives Considered**:
+| Alternative | Pros | Cons | Why Rejected |
+|-------------|------|------|--------------|
+| Leave these concerns as documentation only | Lower implementation cost | High chance of operational drift in real projects | Too weak |
+| Build a full autonomous platform inside the skill pack | Powerful long-term direction | Too large and too coupled for the current repository | Too heavy |
+| Add focused guardrail scripts and protocol docs (Chosen) | Practical, auditable, and consistent with the current skill-pack scope | Adds more operational scripts to maintain | Best balance |
+
+**Consequences**:
+- **Positive**: AI TEAM now has explicit checks for the main delivery failure modes that were previously implicit.
+- **Negative**: Teams must adopt a few more scripts and conventions to get the full benefit.
+
+**Implementation**: Added schema, drift, ownership, onboarding, and runner scripts; added the canonical GitHub Project schema and ownership protocol references; and updated AI TEAM docs to use them as part of normal operation.
+
 ---
 
 ## Deprecated Decisions
@@ -242,6 +265,7 @@ When making a significant decision:
 | D004 | Require execution policy and completion sync discipline | 2026-04-08 | Active |
 | D005 | Keep local memory updates mandatory in GitHub mode | 2026-04-08 | Active |
 | D006 | Back AI TEAM policy with deterministic enforcement scripts | 2026-04-08 | Active |
+| D007 | Add operational guardrails for schema, drift, ownership, onboarding, and runner control | 2026-04-08 | Active |
 
 ---
 

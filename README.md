@@ -205,8 +205,15 @@ If GitHub is enabled, completed work should sync the GitHub Project card immedia
 AI TEAM now includes deterministic enforcement scripts:
 
 - `./scripts/preflight-check.sh` to verify required tools and GitHub readiness
+- `./scripts/check-project-onboarding.sh` to verify memory, GitHub templates, and onboarding readiness
+- `./scripts/validate-github-project-schema.sh` to verify GitHub Project fields and status options
+- `./scripts/validate-worker-ownership.sh` to verify branch naming and commit trailers per worker
+- `./scripts/check-memory-github-drift.sh` to compare local memory against GitHub tracking state
 - `./scripts/sync-completion.sh` to update local memory, backlog, and roadmap on task completion
 - `./scripts/sync-github-task.sh` to update GitHub issue and GitHub Project state when GitHub mode is enabled
+- `./scripts/ai-team-runner.sh` to run a guarded finite execution loop from a TSV task file
+
+Operational guardrail reference: [docs/AI_TEAM_OPERATIONAL_GUARDRAILS.md](docs/AI_TEAM_OPERATIONAL_GUARDRAILS.md)
 
 Then start a new Codex thread. `memory-bank` and `project-developer` are configured to allow implicit invocation, while the rest are best invoked explicitly when useful.
 

@@ -32,6 +32,8 @@ summary=""
 milestone=""
 roadmap_note=""
 next_action=""
+issue_number=""
+github_status=""
 dry_run=0
 
 while [[ $# -gt 0 ]]; do
@@ -74,6 +76,14 @@ while [[ $# -gt 0 ]]; do
       ;;
     --next-action)
       next_action="${2:?missing value for --next-action}"
+      shift 2
+      ;;
+    --issue-number)
+      issue_number="${2:?missing value for --issue-number}"
+      shift 2
+      ;;
+    --github-status)
+      github_status="${2:?missing value for --github-status}"
       shift 2
       ;;
     --dry-run)
@@ -225,6 +235,16 @@ project_entry="- $timestamp | $task_id | $status | $worker | $short_title
   Summary: $summary
   Tracking: $tracking_mode"
 
+if [[ -n "$issue_number" ]]; then
+  project_entry="$project_entry
+  GitHub Issue: #$issue_number"
+fi
+
+if [[ -n "$github_status" ]]; then
+  project_entry="$project_entry
+  GitHub Status: $github_status"
+fi
+
 if [[ -n "$next_action" ]]; then
   project_entry="$project_entry
   Next: $next_action"
@@ -232,12 +252,33 @@ fi
 
 backlog_entry="- $timestamp | $task_id | $status | $worker | $short_title | $summary"
 
+if [[ -n "$issue_number" || -n "$github_status" ]]; then
+  if [[ -n "$issue_number" ]]; then
+    backlog_entry="$backlog_entry
+  GitHub Issue: #$issue_number"
+  fi
+  if [[ -n "$github_status" ]]; then
+    backlog_entry="$backlog_entry
+  GitHub Status: $github_status"
+  fi
+fi
+
 roadmap_entry="- $timestamp | $task_id | $status | ${milestone:-no-milestone}
   Summary: $summary"
 
 if [[ -n "$roadmap_note" ]]; then
   roadmap_entry="$roadmap_entry
   Note: $roadmap_note"
+fi
+
+if [[ -n "$issue_number" ]]; then
+  roadmap_entry="$roadmap_entry
+  GitHub Issue: #$issue_number"
+fi
+
+if [[ -n "$github_status" ]]; then
+  roadmap_entry="$roadmap_entry
+  GitHub Status: $github_status"
 fi
 
 if [[ "$dry_run" -eq 1 ]]; then

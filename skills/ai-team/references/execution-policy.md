@@ -64,6 +64,13 @@ Check required tools before execution starts.
 
 Use `scripts/preflight-check.sh` as the deterministic enforcement path for this policy.
 
+Before sustained delivery starts, also run:
+
+- `scripts/check-project-onboarding.sh`
+- `scripts/validate-github-project-schema.sh` when `github_enabled`
+- `scripts/validate-worker-ownership.sh` when multiple workers are active
+- `scripts/check-memory-github-drift.sh` when milestone reporting or completion accuracy matters
+
 Always useful:
 
 - `git` when version control is desired
@@ -95,6 +102,7 @@ Scripted enforcement:
 
 - `scripts/sync-github-task.sh` for GitHub issue and GitHub Project updates
 - `scripts/sync-completion.sh` for local memory, backlog, and roadmap updates
+- `scripts/check-memory-github-drift.sh` for drift detection between GitHub and local memory
 
 ### In `local_only`
 
@@ -108,6 +116,16 @@ Every completed task must trigger:
 Scripted enforcement:
 
 - `scripts/sync-completion.sh` for local memory, backlog, and roadmap updates
+
+## Operational Loop
+
+For guarded multi-step execution, use `scripts/ai-team-runner.sh` with:
+
+- a task file;
+- max iteration limit;
+- timeout limit;
+- optional continue-on-error behavior; and
+- the same tracking policy established at preflight time.
 
 ## Preflight Packet
 

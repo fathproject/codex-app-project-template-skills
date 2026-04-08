@@ -1,0 +1,48 @@
+{
+  "required_fields": [
+    {
+      "name": "Status",
+      "type": "single_select",
+      "options": [
+        "Backlog",
+        "Ready",
+        "In Progress",
+        "In Review",
+        "In QA",
+        "In Handover",
+        "Blocked",
+        "Done"
+      ]
+    },
+    {
+      "name": "AI Worker"
+    },
+    {
+      "name": "AI Role"
+    },
+    {
+      "name": "Managed By"
+    },
+    {
+      "name": "Review Owner"
+    },
+    {
+      "name": "Workstream"
+    },
+    {
+      "name": "Priority"
+    },
+    {
+      "name": "Risk"
+    },
+    {
+      "name": "Depends On"
+    },
+    {
+      "name": "Phase"
+    },
+    {
+      "name": "Next Handoff"
+    }
+  ]
+}

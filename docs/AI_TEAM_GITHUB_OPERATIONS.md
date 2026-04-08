@@ -58,6 +58,8 @@ Create fields like these in GitHub Projects:
 | `Phase` | Delivery phase | `implementation` |
 | `Next Handoff` | Next AI receiver | `ai-qa-01` |
 
+Use [../skills/ai-team/references/github-project-schema.json](../skills/ai-team/references/github-project-schema.json) as the canonical schema and validate it with `scripts/validate-github-project-schema.sh` before relying on automation.
+
 ## Recommended Status Flow
 
 Use a clear workflow such as:
@@ -88,6 +90,8 @@ Minimum required sync:
 Do not batch card updates for later if the task is already marked complete locally.
 
 GitHub is the operational surface. Local memory is still the long-term project memory and must stay aligned.
+
+Use `scripts/check-memory-github-drift.sh` to detect mismatch between local memory and GitHub status before milestone reporting or release reporting.
 
 ## Issue Template Usage
 
@@ -150,6 +154,16 @@ When work moves between logical AI roles:
 3. link the relevant issue or PR; and
 4. include a short handoff note using the cross-agent handover format.
 
+## Ownership Enforcement
+
+Use `scripts/validate-worker-ownership.sh` to check:
+
+- branch naming;
+- task identifier presence in the branch;
+- `AI-Worker` commit trailer;
+- `Managed-By` commit trailer; and
+- `Task-ID` commit trailer.
+
 ## Minimal Setup Checklist
 
 - [ ] create the custom project fields
@@ -159,3 +173,5 @@ When work moves between logical AI roles:
 - [ ] standardize branch naming
 - [ ] standardize commit trailers
 - [ ] require `AI Worker` and `Managed By` on every tracked task
+- [ ] validate the project schema before AI automation updates cards
+- [ ] check drift between GitHub and local memory during delivery

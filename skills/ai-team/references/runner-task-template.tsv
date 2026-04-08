@@ -1,0 +1,3 @@
+task_id	task_title	worker	command	status	summary	issue_number	milestone	roadmap_note	next_action	github_status	close_issue
+TASK-001	Bootstrap onboarding report	ai-project-manager	echo "Onboarding checked"	done	Onboarding report created		Foundation	Validated bootstrap state	Prepare next task	In Progress	false
+TASK-002	Dry-run delivery sync	ai-project-manager	echo "Delivery sync ready"	done	Delivery sync staged	12	Milestone 1	Prepared GitHub plus local sync	Move to review	Done	true

@@ -42,8 +42,13 @@ Use the bundled scripts under `scripts/`:
 
 - `scripts/bootstrap-memory.sh "$PWD"` to create `./memory/` when missing
 - `scripts/preflight-check.sh --project-root "$PWD" ...` to verify tool and auth readiness
+- `scripts/check-project-onboarding.sh --project-root "$PWD" ...` to verify that memory, templates, and GitHub board prerequisites are actually ready
+- `scripts/validate-github-project-schema.sh --project-owner ... --project-number ...` to verify the GitHub Project fields and status options
+- `scripts/validate-worker-ownership.sh --project-root "$PWD" --worker ... --task-id ...` to validate branch naming and commit trailers for logical AI workers
+- `scripts/check-memory-github-drift.sh --project-root "$PWD" --task-id ...` to detect drift between local memory and GitHub state
 - `scripts/sync-completion.sh --project-root "$PWD" ...` to write local completion state into memory, backlog, and roadmap
 - `scripts/sync-github-task.sh ...` to update the GitHub issue and GitHub Project card when `tracking_mode=github_enabled`
+- `scripts/ai-team-runner.sh --project-root "$PWD" --task-file ...` to run a finite guarded execution loop for a prepared task file
 
 Treat these scripts as the preferred enforcement mechanism whenever AI TEAM is operating inside a writable local project.
 
@@ -56,7 +61,8 @@ Before routing:
 3. Read `memory/PROJECT.md` or `PROJECT.md`.
 4. Apply the execution policy from `references/execution-policy.md`.
 5. Run `scripts/preflight-check.sh` before deeper execution whenever tools or GitHub access matter.
-5. Route only after project memory exists and execution policy is known.
+6. Run `scripts/check-project-onboarding.sh` before active multi-step execution whenever delivery is about to start.
+7. Route only after project memory exists and execution policy is known.
 
 This skill should reduce setup friction. Do not ask the user whether memory should be created first.
 
@@ -90,6 +96,9 @@ Use [references/execution-policy.md](./references/execution-policy.md) as the ca
 - If GitHub is enabled, every completed task must call `scripts/sync-github-task.sh` for issue and board state and `scripts/sync-completion.sh` for local memory state.
 - If GitHub is disabled, all tracking must remain local in memory, backlog, roadmap, and optional local git.
 - If a required tool or GitHub auth is missing, stop and surface the blocker instead of pretending the workflow can continue cleanly.
+- If multiple AI workers are active, validate ownership with `scripts/validate-worker-ownership.sh`.
+- If GitHub is enabled, validate the board schema before relying on status automation.
+- If GitHub is enabled, use `scripts/check-memory-github-drift.sh` after important completion syncs or before reporting milestone progress.
 
 ## Internal Workflow Modules
 
@@ -149,6 +158,7 @@ Prefer the shortest path that solves the task cleanly.
 - Add `github-traceability-board-sync` whenever ownership or board visibility matters.
 - Add `github-integration` or `github-projects` only when `tracking_mode=github_enabled`.
 - Add `delivery-analytics-forecast` whenever milestone progress, ETA, or AI-versus-human comparison is requested.
+- Add the operational guardrail scripts whenever delivery discipline matters more than lightweight brainstorming.
 - If a single skill fully covers the task, do not add more.
 
 ## Backward Compatibility
@@ -197,3 +207,4 @@ Use this routing and preflight packet:
 - Treat sibling skills as internal modules under AI TEAM unless the maintainer explicitly installs them with `--all`.
 - If GitHub is enabled, every completed task must update the GitHub Project card immediately and also update local memory files.
 - If GitHub is disabled, all task tracking must remain local.
+- When delivery is active, guardrail scripts should be treated as part of normal operation, not as optional extras.

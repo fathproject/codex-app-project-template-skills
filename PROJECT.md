@@ -28,8 +28,8 @@ tags:
 | Project | experiment |
 | Phase | Template |
 | Last Session | 2026-04-08 |
-| Current Focus | Convert AI TEAM policy into deterministic preflight and sync scripts |
-| Next Action | Validate the new enforcement scripts and document `gh` as a required GitHub-mode dependency |
+| Current Focus | Close AI TEAM operational blind spots with schema, drift, ownership, onboarding, and runner guardrails |
+| Next Action | Validate the new guardrail scripts and confirm the skill pack is operationally coherent |
 
 ---
 
@@ -93,6 +93,7 @@ The memory bank template includes:
 | 2026-04-08 | 5 | codex | Add execution-mode and completion-sync discipline | Added `github_enabled` vs `local_only` policy, tooling preflight, and immediate GitHub Project sync rules for completed tasks |
 | 2026-04-08 | 6 | codex | Make GitHub mode keep local memory in sync | Updated AI TEAM so GitHub-connected work still writes `PROJECT.md`, backlog, and roadmap alongside GitHub state |
 | 2026-04-08 | 7 | codex | Add deterministic AI TEAM enforcement scripts | Added preflight, local completion sync, and GitHub sync scripts so the AI TEAM policy can be executed and checked consistently |
+| 2026-04-08 | 8 | codex | Close operational blind spots in AI TEAM | Added board schema validation, drift checking, onboarding checks, ownership enforcement, and a guarded runner loop |
 
 ### Detailed Sessions
 
@@ -212,6 +213,24 @@ The memory bank template includes:
   - Local memory sync should stay mandatory in every tracking mode
 - **Next Steps**: Validate the new enforcement scripts and document the GitHub-mode dependency clearly
 
+#### Session #8 - 2026-04-08
+
+- **Agent**: codex
+- **Duration**: ~1 hour
+- **Focus**: Close the remaining operational blind spots around delivery discipline
+- **Work Done**:
+  - Added `validate-github-project-schema.sh` with a canonical schema file for GitHub Project fields and statuses
+  - Added `check-memory-github-drift.sh` to compare local memory tracking against GitHub state
+  - Added `validate-worker-ownership.sh` and the multi-worker ownership protocol reference
+  - Added `check-project-onboarding.sh` to verify memory, templates, preflight, and schema readiness
+  - Added `ai-team-runner.sh` as a guarded finite execution loop with max-iteration and timeout controls
+  - Updated AI TEAM docs and operational references so these scripts become part of the standard flow
+- **Decisions Made**:
+  - AI TEAM should validate GitHub board schema before trusting board automation
+  - Multi-worker branch and trailer conventions should be enforced with a script, not only with docs
+  - A minimal guarded runner is better than leaving autonomous execution completely implicit
+- **Next Steps**: Run the new guardrail scripts together and confirm the pack is operationally coherent
+
 ---
 
 ## Decisions Log
@@ -225,6 +244,7 @@ The memory bank template includes:
 | D004 | 2026-04-08 | Require execution policy and completion sync discipline | Prevents hidden GitHub assumptions and forces immediate tracking updates | Active |
 | D005 | 2026-04-08 | Keep local memory updates mandatory in GitHub mode | Preserves long-term local project memory even when GitHub is active | Active |
 | D006 | 2026-04-08 | Back AI TEAM policy with deterministic enforcement scripts | Makes preflight and completion sync auditable and repeatable | Active |
+| D007 | 2026-04-08 | Add operational guardrails for schema, drift, ownership, onboarding, and runner control | Closes the main delivery blind spots left after the first enforcement pass | Active |
 
 ---
 

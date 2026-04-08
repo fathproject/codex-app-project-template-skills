@@ -28,6 +28,16 @@ Compatibility alias kept in the repo:
 
 - `skill-router`
 
+### 0.5. Operational Guardrails
+
+Use these before or during sustained delivery:
+
+- `scripts/check-project-onboarding.sh`
+- `scripts/validate-github-project-schema.sh`
+- `scripts/validate-worker-ownership.sh`
+- `scripts/check-memory-github-drift.sh`
+- `scripts/ai-team-runner.sh`
+
 ### 1. Intake And Scope
 
 2. `client-intake-normalizer`
@@ -144,5 +154,6 @@ The skill pack is considered coherent when:
 - each active skill has a clear output contract or packet;
 - upstream and downstream relationships are visible;
 - GitHub traceability is consistent with AI worker ownership;
+- operational guardrails exist for schema drift, ownership drift, onboarding, and memory drift;
 - memory and docs closure are part of the normal flow; and
 - legacy skills are clearly marked so they do not compete with the main path.

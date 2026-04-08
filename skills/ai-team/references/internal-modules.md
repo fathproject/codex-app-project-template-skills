@@ -52,6 +52,16 @@ Load these only when `tracking_mode=github_enabled`:
 - `../github-projects/SKILL.md`
 - `../project-initialization/SKILL.md`
 
+## Operational Guardrails
+
+Use these scripts with AI TEAM when delivery moves from planning into disciplined execution:
+
+- `../ai-team/scripts/check-project-onboarding.sh`
+- `../ai-team/scripts/validate-github-project-schema.sh`
+- `../ai-team/scripts/validate-worker-ownership.sh`
+- `../ai-team/scripts/check-memory-github-drift.sh`
+- `../ai-team/scripts/ai-team-runner.sh`
+
 ## Legacy Or Supporting
 
 - `../skill-router/SKILL.md`

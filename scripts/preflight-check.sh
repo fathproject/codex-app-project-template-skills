@@ -101,10 +101,10 @@ push_unique() {
   eval "${array_name}+=(\"\$value\")"
 }
 
-required_tools=()
-missing_items=()
-tracking_surfaces=()
-detected_notes=()
+declare -a required_tools=()
+declare -a missing_items=()
+declare -a tracking_surfaces=()
+declare -a detected_notes=()
 
 if [[ -z "$repository_mode" ]]; then
   if [[ "$tracking_mode" == "github_enabled" ]]; then
@@ -222,12 +222,14 @@ tool_name_for_command() {
   esac
 }
 
-for tool in "${required_tools[@]}"; do
-  command_name="$(tool_name_for_command "$tool")"
-  if ! command -v "$command_name" >/dev/null 2>&1; then
-    missing_items+=("Missing tool: $tool")
-  fi
-done
+if [[ -n "${required_tools[*]-}" ]]; then
+  for tool in "${required_tools[@]}"; do
+    command_name="$(tool_name_for_command "$tool")"
+    if ! command -v "$command_name" >/dev/null 2>&1; then
+      missing_items+=("Missing tool: $tool")
+    fi
+  done
+fi
 
 detected_auth="none"
 if [[ "$tracking_mode" == "github_enabled" ]]; then
@@ -278,7 +280,7 @@ echo "## Authentication Mode"
 echo "- $detected_auth"
 echo
 echo "## Required Tools"
-if [[ "${#required_tools[@]}" -eq 0 ]]; then
+if [[ -z "${required_tools[*]-}" ]]; then
   echo "- none"
 else
   for tool in "${required_tools[@]}"; do
@@ -287,7 +289,7 @@ else
 fi
 echo
 echo "## Missing Or Blocking Items"
-if [[ "${#missing_items[@]}" -eq 0 ]]; then
+if [[ -z "${missing_items[*]-}" ]]; then
   echo "- none"
 else
   for item in "${missing_items[@]}"; do
@@ -307,7 +309,7 @@ else
   echo "- Every completed task must update the local memory files and optional local git state."
 fi
 
-if [[ "${#detected_notes[@]}" -gt 0 ]]; then
+if [[ -n "${detected_notes[*]-}" ]]; then
   echo
   echo "## Detection Notes"
   for note in "${detected_notes[@]}"; do
@@ -315,6 +317,6 @@ if [[ "${#detected_notes[@]}" -gt 0 ]]; then
   done
 fi
 
-if [[ "${#missing_items[@]}" -gt 0 ]]; then
+if [[ -n "${missing_items[*]-}" ]]; then
   exit 1
 fi
