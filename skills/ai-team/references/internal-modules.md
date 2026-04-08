@@ -56,6 +56,7 @@ Load these only when `tracking_mode=github_enabled`:
 
 Use these scripts with AI TEAM when delivery moves from planning into disciplined execution:
 
+- `../ai-team/scripts/summarize-memory-state.sh`
 - `../ai-team/scripts/check-project-onboarding.sh`
 - `../ai-team/scripts/validate-github-project-schema.sh`
 - `../ai-team/scripts/validate-worker-ownership.sh`

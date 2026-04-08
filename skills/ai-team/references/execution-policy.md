@@ -2,6 +2,14 @@
 
 Apply this before deeper routing.
 
+If `memory/PROJECT.md` or `PROJECT.md` already exists, AI TEAM is in `resume_mode=existing_memory`.
+
+In that mode:
+
+- do not bootstrap a replacement memory copy;
+- do not overwrite memory unless the user explicitly asks for a forced reset; and
+- run `scripts/summarize-memory-state.sh --project-root "$PWD"` before deeper work.
+
 ## Tracking Mode
 
 Choose exactly one:

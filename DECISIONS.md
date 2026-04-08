@@ -238,6 +238,29 @@ When making a significant decision:
 
 **Implementation**: Added schema, drift, ownership, onboarding, and runner scripts; added the canonical GitHub Project schema and ownership protocol references; and updated AI TEAM docs to use them as part of normal operation.
 
+### D008 - 2026-04-08: Treat Existing Memory As The Default Resume Source Of Truth
+
+**Status**: Active
+**Made By**: codex
+**Related**: D000, D006, D007
+
+**Decision**: If a project already has `memory/PROJECT.md` or `PROJECT.md`, AI TEAM and Memory Bank must resume from that memory instead of bootstrapping or overwriting it during normal continuation work.
+
+**Context**: The purpose of project memory is to preserve long-term state across sessions. Overwriting an existing memory directory during continuation work would destroy the very history the AI needs in order to resume correctly.
+
+**Alternatives Considered**:
+| Alternative | Pros | Cons | Why Rejected |
+|-------------|------|------|--------------|
+| Re-bootstrap memory whenever AI TEAM starts | Simple to reason about | Destroys continuity and risks losing project-specific state | Too destructive |
+| Ask the user every time whether to replace memory | Safe | Adds friction and invites inconsistent continuation behavior | Too noisy |
+| Resume from existing memory by default (Chosen) | Preserves continuity and keeps AI grounded in actual project history | Requires one more summary step before routing | Best fit |
+
+**Consequences**:
+- **Positive**: Existing projects keep their accumulated memory and AI TEAM starts from the latest known state.
+- **Negative**: Forced reset or intentional replacement now has to be explicit.
+
+**Implementation**: Added `scripts/summarize-memory-state.sh`, updated AI TEAM and Memory Bank to enter resume mode when memory exists, and documented that overwrite is forbidden by default unless the user explicitly requests a forced reset.
+
 ---
 
 ## Deprecated Decisions
@@ -266,6 +289,7 @@ When making a significant decision:
 | D005 | Keep local memory updates mandatory in GitHub mode | 2026-04-08 | Active |
 | D006 | Back AI TEAM policy with deterministic enforcement scripts | 2026-04-08 | Active |
 | D007 | Add operational guardrails for schema, drift, ownership, onboarding, and runner control | 2026-04-08 | Active |
+| D008 | Treat existing memory as the default resume source of truth | 2026-04-08 | Active |
 
 ---
 

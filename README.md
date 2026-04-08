@@ -2,7 +2,7 @@
 
 A Codex-native port of the `goldfanatictrader/app-template` repository.
 
-This repository is a self-contained project memory bank template plus a reusable Codex skill pack. Copy or clone it into a project as `memory/`, or let `$ai-team`, `$skill-router`, and `$memory-bank` bootstrap `memory/` automatically into the current project. The bootstrap flow initializes a fresh `memory/PROJECT.md` from `TEMPLATE.md` so each project starts with its own memory history.
+This repository is a self-contained project memory bank template plus a reusable Codex skill pack. Copy or clone it into a project as `memory/`, or let `$ai-team`, `$skill-router`, and `$memory-bank` bootstrap `memory/` automatically into the current project. The bootstrap flow initializes a fresh `memory/PROJECT.md` from `TEMPLATE.md` so each project starts with its own memory history. If a project already has `memory/PROJECT.md` or `PROJECT.md`, AI TEAM should resume from that memory instead of replacing it.
 
 ## What Changed From The OpenCode Version
 
@@ -193,6 +193,8 @@ If you are maintaining the pack and want every internal module exposed separatel
 
 For a fresh project, use `$ai-team` as the first skill entry point. It bootstraps `./memory/` from this template automatically when the current project has neither `./memory/PROJECT.md` nor `./PROJECT.md`.
 
+For an existing project, use `$ai-team` to resume from the current memory state. It should not overwrite `memory/` during normal continuation work.
+
 `$skill-router` remains available in the repo as a routing alias, but it is not installed publicly by default.
 
 `$ai-team` also establishes execution policy before deeper work starts:
@@ -204,6 +206,7 @@ If GitHub is enabled, completed work should sync the GitHub Project card immedia
 
 AI TEAM now includes deterministic enforcement scripts:
 
+- `./scripts/summarize-memory-state.sh` to summarize the latest recorded memory state before resuming a project
 - `./scripts/preflight-check.sh` to verify required tools and GitHub readiness
 - `./scripts/check-project-onboarding.sh` to verify memory, GitHub templates, and onboarding readiness
 - `./scripts/validate-github-project-schema.sh` to verify GitHub Project fields and status options
@@ -220,6 +223,7 @@ Then start a new Codex thread. `memory-bank` and `project-developer` are configu
 Examples:
 
 - `Use $ai-team to bootstrap this project and choose the right workflow`
+- `Use $ai-team to resume this project from the current memory state`
 - `Use $skill-router to choose the right workflow for this task`
 - `Use $client-intake-normalizer to structure these client notes`
 - `Use $solution-options-tradeoffs to compare solution paths`

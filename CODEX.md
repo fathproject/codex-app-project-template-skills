@@ -15,10 +15,12 @@ It combines:
 ### At Session Start
 
 1. If the current project has neither `memory/PROJECT.md` nor `PROJECT.md`, bootstrap `memory/` from this template first.
-2. Read `PROJECT.md`.
-3. Check `DECISIONS.md`.
-4. Review `context/conventions.md`.
-5. Load any other context documents needed for the current task.
+2. If project memory already exists, do not overwrite it. Resume from it.
+3. Run `scripts/summarize-memory-state.sh --project-root "$PWD"` to learn the latest recorded state.
+4. Read `PROJECT.md`.
+5. Check `DECISIONS.md`.
+6. Review `context/conventions.md`.
+7. Load any other context documents needed for the current task.
 
 ### During The Session
 

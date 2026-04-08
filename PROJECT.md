@@ -28,8 +28,8 @@ tags:
 | Project | experiment |
 | Phase | Template |
 | Last Session | 2026-04-08 |
-| Current Focus | Close AI TEAM operational blind spots with schema, drift, ownership, onboarding, and runner guardrails |
-| Next Action | Validate the new guardrail scripts and confirm the skill pack is operationally coherent |
+| Current Focus | Make existing memory authoritative for project resume mode |
+| Next Action | Validate resume-mode memory summarization and ensure AI TEAM never overwrites existing memory by default |
 
 ---
 
@@ -94,6 +94,7 @@ The memory bank template includes:
 | 2026-04-08 | 6 | codex | Make GitHub mode keep local memory in sync | Updated AI TEAM so GitHub-connected work still writes `PROJECT.md`, backlog, and roadmap alongside GitHub state |
 | 2026-04-08 | 7 | codex | Add deterministic AI TEAM enforcement scripts | Added preflight, local completion sync, and GitHub sync scripts so the AI TEAM policy can be executed and checked consistently |
 | 2026-04-08 | 8 | codex | Close operational blind spots in AI TEAM | Added board schema validation, drift checking, onboarding checks, ownership enforcement, and a guarded runner loop |
+| 2026-04-08 | 9 | codex | Make existing memory the default resume source of truth | Added latest-state summarization and made AI TEAM resume from memory instead of overwriting it |
 
 ### Detailed Sessions
 
@@ -231,6 +232,21 @@ The memory bank template includes:
   - A minimal guarded runner is better than leaving autonomous execution completely implicit
 - **Next Steps**: Run the new guardrail scripts together and confirm the pack is operationally coherent
 
+#### Session #9 - 2026-04-08
+
+- **Agent**: codex
+- **Duration**: ~0.5 hours
+- **Focus**: Make project continuation resume from existing memory instead of replacing it
+- **Work Done**:
+  - Added `scripts/summarize-memory-state.sh` to produce a latest-state packet from existing memory
+  - Added wrapper scripts for AI TEAM and memory-bank
+  - Updated `ai-team` and `memory-bank` so existing memory triggers resume mode, not bootstrap
+  - Updated top-level docs to state that existing `memory/` is authoritative unless the user explicitly requests a forced reset
+- **Decisions Made**:
+  - Existing memory must be treated as the source of truth for continuation work
+  - AI TEAM should summarize current memory state before deeper routing or execution
+- **Next Steps**: Validate resume-mode memory summarization and ensure no default overwrite path remains
+
 ---
 
 ## Decisions Log
@@ -245,6 +261,7 @@ The memory bank template includes:
 | D005 | 2026-04-08 | Keep local memory updates mandatory in GitHub mode | Preserves long-term local project memory even when GitHub is active | Active |
 | D006 | 2026-04-08 | Back AI TEAM policy with deterministic enforcement scripts | Makes preflight and completion sync auditable and repeatable | Active |
 | D007 | 2026-04-08 | Add operational guardrails for schema, drift, ownership, onboarding, and runner control | Closes the main delivery blind spots left after the first enforcement pass | Active |
+| D008 | 2026-04-08 | Treat existing memory as the default resume source of truth | Prevents project continuation work from replacing the memory history it should be learning from | Active |
 
 ---
 

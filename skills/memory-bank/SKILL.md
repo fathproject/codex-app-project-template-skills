@@ -45,25 +45,24 @@ if [ ! -f "memory/PROJECT.md" ] && [ ! -f "PROJECT.md" ]; then
   bash scripts/bootstrap-memory.sh "$PWD"
 fi
 
-# Check if project has memory bank
-if [ -f "memory/PROJECT.md" ]; then
-  cat memory/PROJECT.md
-elif [ -f "PROJECT.md" ]; then
-  cat PROJECT.md
-fi
+# If memory exists, summarize and resume from that state instead of overwriting it
+bash scripts/summarize-memory-state.sh --project-root "$PWD"
 ```
 
 **If memory exists:**
-1. Read `memory/PROJECT.md` completely
-2. Check `memory/DECISIONS.md` for rationale
-3. Review current tasks and blockers
-4. Note last session date and next steps
+1. Do not bootstrap or overwrite it
+2. Run `scripts/summarize-memory-state.sh --project-root "$PWD"`
+3. Read `memory/PROJECT.md` completely
+4. Check `memory/DECISIONS.md` for rationale
+5. Review current tasks and blockers
+6. Note last session date and next steps
 
 **If NO memory exists:**
 1. Run the bundled `scripts/bootstrap-memory.sh "$PWD"` from this skill directory
-2. Re-read `memory/PROJECT.md`
-3. Continue the session with the new local memory copy
-4. Tell the user that project memory was bootstrapped automatically
+2. Run `scripts/summarize-memory-state.sh --project-root "$PWD"`
+3. Re-read `memory/PROJECT.md`
+4. Continue the session with the new local memory copy
+5. Tell the user that project memory was bootstrapped automatically
 
 ### During Session
 
@@ -103,6 +102,8 @@ Update memory bank with:
 
 - ALWAYS read memory at session start
 - ALWAYS bootstrap `memory/` automatically if it is missing
+- NEVER overwrite existing memory during normal resume flow
+- ALWAYS summarize the latest existing memory state before deeper work
 - ALWAYS update memory at session end
 - Include rationale in decisions
 - Mark tasks as complete
@@ -114,6 +115,9 @@ Use this continuity packet:
 
 ```md
 # Continuity Packet
+
+## Resume Mode
+- existing_memory / bootstrapped_new_memory
 
 ## Current State
 - Current focus
@@ -171,6 +175,7 @@ memory/
 ## Rules
 
 - If memory conflicts with the codebase, call out the mismatch instead of silently trusting one side.
+- Existing memory should be treated as the resume source of truth unless the user explicitly requests a forced reset.
 - The next action must be concrete enough that another AI worker can resume immediately.
 
 ---

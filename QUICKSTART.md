@@ -56,6 +56,8 @@ Update:
 
 For a brand new project, start with `$ai-team`. It will bootstrap `./memory/` automatically when the current project does not already have `memory/PROJECT.md` or `PROJECT.md`, and it will initialize a fresh `memory/PROJECT.md` from `TEMPLATE.md`.
 
+For an existing project, `$ai-team` should switch into resume mode. It should read and summarize the current memory state first, not overwrite it.
+
 AI TEAM should also decide the execution mode up front:
 
 - `github_enabled` if the project should use GitHub issues, boards, and remote version control
@@ -70,6 +72,7 @@ Main AI-team flow reference:
 Typical prompts:
 
 - `Use $ai-team to bootstrap this project and choose the right workflow`
+- `Use $ai-team to resume this project from its current memory state`
 - `Use $ai-team to report milestone progress and compare AI versus human ETA`
 - `Use $ai-team to investigate this codebase before coding`
 - `Use $ai-team to run this project as an AI-managed workflow`

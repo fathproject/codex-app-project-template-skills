@@ -29,10 +29,11 @@ Other skills in the repo are internal workflow modules for AI TEAM, not separate
 Its job is to:
 
 1. bootstrap project memory when needed;
-2. establish execution policy and preflight requirements;
-3. classify the current request;
-4. choose the smallest valid AI-team workflow; and
-5. tell the next skill clearly.
+2. resume existing project memory when it already exists;
+3. establish execution policy and preflight requirements;
+4. classify the current request;
+5. choose the smallest valid AI-team workflow; and
+6. tell the next skill clearly.
 
 ## Deterministic Enforcement
 
@@ -41,6 +42,7 @@ AI TEAM should not rely on policy prose alone when deterministic tooling is avai
 Use the bundled scripts under `scripts/`:
 
 - `scripts/bootstrap-memory.sh "$PWD"` to create `./memory/` when missing
+- `scripts/summarize-memory-state.sh --project-root "$PWD"` to summarize the latest recorded memory state before resuming work
 - `scripts/preflight-check.sh --project-root "$PWD" ...` to verify tool and auth readiness
 - `scripts/check-project-onboarding.sh --project-root "$PWD" ...` to verify that memory, templates, and GitHub board prerequisites are actually ready
 - `scripts/validate-github-project-schema.sh --project-owner ... --project-number ...` to verify the GitHub Project fields and status options
@@ -57,12 +59,14 @@ Treat these scripts as the preferred enforcement mechanism whenever AI TEAM is o
 Before routing:
 
 1. Check whether `./memory/PROJECT.md` or `./PROJECT.md` already exists.
-2. If neither exists, bootstrap `./memory/` immediately by running the bundled `scripts/bootstrap-memory.sh "$PWD"`.
-3. Read `memory/PROJECT.md` or `PROJECT.md`.
-4. Apply the execution policy from `references/execution-policy.md`.
-5. Run `scripts/preflight-check.sh` before deeper execution whenever tools or GitHub access matter.
-6. Run `scripts/check-project-onboarding.sh` before active multi-step execution whenever delivery is about to start.
-7. Route only after project memory exists and execution policy is known.
+2. If memory already exists, do not bootstrap or overwrite it. Run `scripts/summarize-memory-state.sh --project-root "$PWD"` and treat the project as `resume_mode=existing_memory`.
+3. If neither file exists, bootstrap `./memory/` immediately by running the bundled `scripts/bootstrap-memory.sh "$PWD"`.
+4. After bootstrap, run `scripts/summarize-memory-state.sh --project-root "$PWD"` so the fresh memory becomes the known state.
+5. Read `memory/PROJECT.md` or `PROJECT.md`.
+6. Apply the execution policy from `references/execution-policy.md`.
+7. Run `scripts/preflight-check.sh` before deeper execution whenever tools or GitHub access matter.
+8. Run `scripts/check-project-onboarding.sh` before active multi-step execution whenever delivery is about to start.
+9. Route only after project memory exists and execution policy is known.
 
 This skill should reduce setup friction. Do not ask the user whether memory should be created first.
 
@@ -93,6 +97,8 @@ Use [references/execution-policy.md](./references/execution-policy.md) as the ca
 - If `tracking_mode=local_only`, do not require GitHub auth and do not route into GitHub-only setup work.
 - If the project is new and GitHub is enabled, use `repository_mode=new_repo`.
 - If the project already has a usable GitHub repository, use `repository_mode=existing_repo`.
+- If `memory/PROJECT.md` or `PROJECT.md` already exists, bootstrap is forbidden unless the user explicitly asks for a forced reset.
+- Existing memory is the source of truth for resume mode and must be summarized before deeper work starts.
 - If GitHub is enabled, every completed task must call `scripts/sync-github-task.sh` for issue and board state and `scripts/sync-completion.sh` for local memory state.
 - If GitHub is disabled, all tracking must remain local in memory, backlog, roadmap, and optional local git.
 - If a required tool or GitHub auth is missing, stop and surface the blocker instead of pretending the workflow can continue cleanly.
@@ -174,6 +180,9 @@ Use this routing and preflight packet:
 ```md
 # AI TEAM Routing Packet
 
+## Resume Mode
+- existing_memory / bootstrapped_new_memory
+
 ## Execution Policy
 - Tracking mode
 - Repository mode
@@ -200,6 +209,7 @@ Use this routing and preflight packet:
 ## Rules
 
 - Bootstrap memory first if the project has none yet.
+- If memory already exists, resume from it and do not replace it.
 - Establish execution policy before deeper routing.
 - Route first, then work.
 - Prefer fewer skills over more skills.
